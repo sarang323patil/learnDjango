@@ -12,37 +12,20 @@ def analyze(request):
 	# get the text
 	djtext = request.GET.get('text', 'default')
 	removepunc = request.GET.get('removepunc', 'default')
-	
+	fulcaps = request.GET.get('fulcaps', 'default')
 	# Analyze the text
 	analyzed = ""
 	punctuation = ''':;()[]}{<>!@?/|-_=+-*%^.'",&'''
 	for char in djtext:
 		if(char not in punctuation):
 			analyzed += char 
-	print(djtext, removepunc, analyzed)
-	params = {'purpose':'Remove Puctuation', 'analyzed':analyzed}
+	print(djtext, removepunc, fulcaps)
+	
 	if(removepunc != "on"):
 		analyzed = djtext
+	if(fulcaps == "on"):
+		print("capitalize")
+		analyzed = analyzed.upper() 
+
+	params = {'purpose':'Remove Puctuation', 'analyzed':analyzed}
 	return render(request, 'analyze.html', params)
-'''
-def removepunc(request):
-	# get the text
-	djtext = request.GET.get('text', 'default')
-
-	# Analyze the text
-	return HttpResponse(''remove punc <a href="/">back</a>')
-
-
-def capfirst(request):
-	return HttpResponse("capitalize first")
-
-def newlinerem(request):
-	return HttpResponse("new line remove")
-
-def spacerem(request):
-	return HttpResponse("space remove")
-
-def charcount(request):
-	return HttpResponse("char count")
-
-'''
