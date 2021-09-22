@@ -40,13 +40,14 @@
 	</nav>
 
    	<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Welcome to TextUtils, Edit your text here</strong> You should check in on some of those fields below.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+	  <strong>Welcome to TextUtils, Edit your text here</strong> You should check in on some of those fields below.
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
 
 
 	<div class="container">
-		<form action='/analyze' method='get'>
+		<form action='/analyze' method='post'>
+			{% csrf_token %}
 
 		<div class="mb-3">
 		  <label for="exampleFormControlTextarea1" class="form-label">Enter your text here</label>

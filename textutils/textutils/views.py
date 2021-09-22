@@ -10,9 +10,9 @@ def index(request):
 
 def analyze(request):
 	# get the text
-	djtext = request.GET.get('text', 'default')
-	removepunc = request.GET.get('removepunc', 'default')
-	fulcaps = request.GET.get('fulcaps', 'default')
+	djtext = request.POST.get('text', 'default')
+	removepunc = request.POST.get('removepunc', 'default')
+	fulcaps = request.POST.get('fulcaps', 'default')
 	# Analyze the text
 	analyzed = ""
 	punctuation = ''':;()[]}{<>!@?/|-_=+-*%^.'",&'''
